@@ -3,6 +3,11 @@
 locked boxes
 """
 
+import sys
+
+# Set a new recursion limit
+sys.setrecursionlimit(5000)  # Example: Increase limit to 2000
+
 
 def canUnlockAll(boxes):
     n = len(boxes)
