@@ -9,7 +9,7 @@ def canUnlockAll(boxes):
     vis = [False] * n
 
     def dfs(at):
-        if vis[at]:
+        if at >= n or vis[at]:
             return 0
 
         cnt = 1
