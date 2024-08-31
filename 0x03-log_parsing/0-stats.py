@@ -20,8 +20,8 @@ def reportdata(filesize):
 
 def getStdidRead():
     filesize, count = 0, 0
-    while True:
-        try:
+    try:
+        for ine in sys.stdin:
             ine = input()
             count += 1
             data = ine.split()
@@ -39,9 +39,10 @@ def getStdidRead():
 
             if count % 10 == 0:
                 reportdata(filesize)
-
-        except KeyboardInterrupt:
             reportdata(filesize)
+    except KeyboardInterrupt:
+        reportdata(filesize)
+        raise
 
 
 if __name__ == "__main__":
