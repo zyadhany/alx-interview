@@ -12,6 +12,12 @@ def minOperations(n):
         min opp to get n
     """
 
+    if n <= 0:
+        return 0
+
+    if n % 2:
+        return n
+
     que = Queue()
     que.put((1, 0))
     vis = {}
