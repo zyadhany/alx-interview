@@ -23,24 +23,21 @@ def getStdidRead():
     regex = re.compile(
     r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - \[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.\d+\] "GET /projects/260 HTTP/1.1" (.{3}) (\d+)')  # nopep8
     filesize, count = 0, 0
-    try:
-        for line in sys.stdin:
-            count += 1
-            line = line.strip()
-            match = regex.fullmatch(line)
 
-            if match:
-                code = match.group(1)
-                filesize += int(match.group(2))
+    for line in sys.stdin:
+        count += 1
+        line = line.strip()
 
-                if (code.isdecimal()):
-                    stats[code] += 1
+        match = regex.fullmatch(line)
+        if match:
+            code = match.group(1)
+            filesize += int(match.group(2))
 
-            if (count % 10 == 0):
-                count = 0
-                reportdata(filesize)
-    finally:
-        reportdata(filesize)
+            if (code.isdecimal()):
+                stats[code] += 1
+
+        if (count % 10 == 0):
+            reportdata(filesize)
 
 
 if __name__ == "__main__":
