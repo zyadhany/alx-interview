@@ -33,11 +33,11 @@ def getStdidRead():
                 code = match.group(1)
                 filesize += int(match.group(2))
 
-            if (code.isdecimal()):
-                stats[code] += 1
+                if (code.isdecimal()):
+                    stats[code] += 1
 
-            if (count % 10 == 0):
-                reportdata(filesize)
+                if (count % 10 == 0):
+                    reportdata(filesize)
     finally:
         reportdata(filesize)
 
