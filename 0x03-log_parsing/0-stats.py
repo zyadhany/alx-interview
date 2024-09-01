@@ -37,7 +37,7 @@ def getStdidRead():
 
             if (count % 10 == 0):
                 reportdata(filesize)
-    except KeyboardInterrupt:
+    finally:
         reportdata(filesize)
 
 
