@@ -5,6 +5,7 @@ locked boxes
 
 import signal
 import sys
+import re
 
 
 codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
@@ -19,30 +20,26 @@ def reportdata(filesize):
 
 
 def getStdidRead():
+    regex = re.compile(
+    r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - \[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.\d+\] "GET /projects/260 HTTP/1.1" (.{3}) (\d+)')  # nopep8
     filesize, count = 0, 0
     try:
-        for ine in sys.stdin:
-            ine = input()
-            count += 1
-            data = ine.split()
-            try:
-                status_code = data[-2]
-                if status_code in stats:
-                    stats[status_code] += 1
-            except BaseException:
-                pass
+        for line in sys.stdin:
+            line = line.strip()
+            match = regex.fullmatch(line)
 
-            try:
-                filesize += int(data[-1])
-            except BaseException:
-                pass
+            if match:
+                count += 1
+                code = match.group(1)
+                filesize += int(match.group(2))
 
-            if count % 10 == 0:
+            if (code.isdecimal()):
+                stats[code] += 1
+
+            if (count % 10 == 0):
                 reportdata(filesize)
-            reportdata(filesize)
-    except KeyboardInterrupt:
+    finally:
         reportdata(filesize)
-        raise
 
 
 if __name__ == "__main__":
