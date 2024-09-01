@@ -3,7 +3,6 @@
 locked boxes
 """
 
-import signal
 import sys
 import re
 
@@ -38,7 +37,7 @@ def getStdidRead():
 
             if (count % 10 == 0):
                 reportdata(filesize)
-    finally:
+    except KeyboardInterrupt:
         reportdata(filesize)
 
 
