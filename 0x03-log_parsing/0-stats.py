@@ -25,20 +25,20 @@ def getStdidRead():
     filesize, count = 0, 0
     try:
         for line in sys.stdin:
+            count += 1
             line = line.strip()
             match = regex.fullmatch(line)
 
             if match:
-                count += 1
                 code = match.group(1)
                 filesize += int(match.group(2))
 
                 if (code.isdecimal()):
                     stats[code] += 1
 
-                if (count % 10 == 0):
-                    count = 0
-                    reportdata(filesize)
+            if (count % 10 == 0):
+                count = 0
+                reportdata(filesize)
     finally:
         reportdata(filesize)
 
