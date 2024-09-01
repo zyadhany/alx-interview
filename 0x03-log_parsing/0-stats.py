@@ -37,6 +37,7 @@ def getStdidRead():
                     stats[code] += 1
 
                 if (count % 10 == 0):
+                    count = 0
                     reportdata(filesize)
     finally:
         reportdata(filesize)
