@@ -23,7 +23,6 @@ def validUTF8(data):
     left = 0
 
     for ch in data:
-        ch &= (1 << 8) - 1
         if left:
             lf = (ch >> 6)
             if not (ch & (1 << 7) and not (ch & (1 << 6))):
