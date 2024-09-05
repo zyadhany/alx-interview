@@ -26,7 +26,7 @@ def validUTF8(data):
         ch &= (1 << 8) - 1
         if left:
             lf = (ch >> 6)
-            if lf != 2:
+            if not (ch & (1 << 7) and not (ch & (1 << 6))):
                 return False
         else:
             left = leadOne(ch)
