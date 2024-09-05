@@ -34,4 +34,5 @@ def validUTF8(data):
             if left == 0:
                 continue
         left -= 1
+        left = max(left, 0)
     return True
