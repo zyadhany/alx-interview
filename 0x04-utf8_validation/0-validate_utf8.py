@@ -23,16 +23,16 @@ def validUTF8(data):
     left = 0
 
     for ch in data:
-        if left:
-            lf = (ch >> 6)
-            if not (ch & (1 << 7) and not (ch & (1 << 6))):
-                return False
-        else:
+        if left == 0:
             left = leadOne(ch)
             if left == 1 or left > 4:
                 return False
             if left == 0:
                 continue
+        else:
+            lf = (ch >> 6)
+            if not (ch & (1 << 7) and not (ch & (1 << 6))):
+                return False
         left -= 1
         left = max(left, 0)
     return True
