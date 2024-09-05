@@ -5,6 +5,9 @@ validate
 
 
 def leadOne(num):
+    """
+    get lead 1 of number
+    """
     tmp = (1 << 7)
     cnt = 0
     while tmp & num:
@@ -14,6 +17,9 @@ def leadOne(num):
 
 
 def validUTF8(data):
+    """
+    check utf8 format
+    """
     left = 0
 
     for ch in data:
