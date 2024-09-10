@@ -29,7 +29,7 @@ def solve_nqueens(board, col, n, pos):
 
     for i in range(n):
         if is_safe(board, i, col):
-            pos.append([i, col])
+            pos.append([col, i])
             board[i][col] = 1
             solve_nqueens(board, col + 1, n, pos)
             pos.pop()
