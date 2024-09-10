@@ -35,24 +35,20 @@ def solve_nqueens(board, col, n, pos):
             pos.pop()
             board[i][col] = 0
 
-def main():
-    """Main function"""
-    if len(sys.argv) > 2 or len(sys.argv) < 2:
-        print("Usage: nqueens N")
-        exit(1)
 
-    if not sys.argv[1].isdigit():
-        print("N must be a number")
-        exit(1)
+if len(sys.argv) > 2 or len(sys.argv) < 2:
+    print("Usage: nqueens N")
+    exit(1)
 
-    if int(sys.argv[1]) < 4:
-        print("N must be at least 4")
-        exit(1)
+if not sys.argv[1].isdigit():
+    print("N must be a number")
+    exit(1)
 
-    n = int(sys.argv[1])
-    pos = []
-    board = [[0 for j in range(n)] for i in range(n)]
-    solve_nqueens(board, 0, n, pos)
+if int(sys.argv[1]) < 4:
+    print("N must be at least 4")
+    exit(1)
 
-if __name__ == "__main__":
-    main()
+n = int(sys.argv[1])
+pos = []
+board = [[0 for j in range(n)] for i in range(n)]
+solve_nqueens(board, 0, n, pos)
