@@ -6,6 +6,7 @@ n-queens problem
 import sys
 
 def is_safe(board, row, col):
+    """Check if a queen can be placed on board[row][col]"""
     for i in range(col):
         if board[row][i] == 1:
             return False
@@ -21,6 +22,7 @@ def is_safe(board, row, col):
     return True
 
 def solve_nqueens(board, col, n, pos):
+    """Solve n-queens problem"""
     if col == n:
         print(pos)
         return
@@ -34,6 +36,7 @@ def solve_nqueens(board, col, n, pos):
             board[i][col] = 0
 
 def main():
+    """Main function"""
     if len(sys.argv) > 2 or len(sys.argv) < 2:
         print("Usage: nqueens N")
         exit(1)
