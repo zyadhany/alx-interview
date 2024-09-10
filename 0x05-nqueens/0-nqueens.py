@@ -35,6 +35,7 @@ def is_safe(board, row, col):
 
     return True
 
+
 def solve_nqueens(board, col, n, pos):
     """Solve n-queens problem"""
     if col == n:
