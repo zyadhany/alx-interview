@@ -3,8 +3,6 @@
 Test 0x07 - Rotate 2D Matrix
 """
 
-import numpy as np
-
 
 def rotate_2d_matrix(matrix):
     """
