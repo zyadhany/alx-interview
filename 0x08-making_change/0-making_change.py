@@ -15,14 +15,15 @@ def makeChange(coins, total):
 
     if total <= 0:
         return 0
-
-    dp = np.zeros(total + 1) + 23456789
-    dp[0] = 0
-
-    for i in range(total):
-        for coin in coins:
-            if i + coin <= total:
-                dp[i + coin] = min(dp[i + coin], dp[i] + 1)
-    if dp[total] == 23456789:
-        return -1
-    return int(dp[total])
+    check = 0
+    temp = 0
+    coins.sort(reverse=True)
+    for i in coins:
+        while check < total:
+            check += i
+            temp += 1
+        if check == total:
+            return temp
+        check -= i
+        temp -= 1
+    return -1
