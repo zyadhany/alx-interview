@@ -6,6 +6,11 @@ Island Perimeter
 
 
 def island_perimeter(grid):
+    """
+    Given a 2D grid map of 1s (land) and 0s (water).
+    Compute the perimeter of the island.
+    """
+
     n = len(grid)
     m = len(grid[0])
     perimeter = 0
